@@ -147,7 +147,7 @@ class YogiRule(optimizer.UpdateRule):
                     'T param, T m, T v, T vhat',
                     '''m += one_minus_beta1 * (grad - m);
                        T sqgrad = grad * grad;
-                       v += one_minus_beta2 * sign(sqgrad - v) * sqgrad;
+                       v += copysignf(one_minus_beta2, sqgrad - v) * sqgrad;
                        vhat = max(vhat, v);
                        param -= eta * (alpha_t * m / (sqrt(vhat) + eps) +
                                        weight_decay_rate * param);''',
@@ -166,7 +166,7 @@ class YogiRule(optimizer.UpdateRule):
                     'T param, T m, T v',
                     '''m += one_minus_beta1 * (grad - m);
                        T sqgrad = grad * grad;
-                       v += one_minus_beta2 * sign(sqgrad - v) * sqgrad;
+                       v += copysignf(one_minus_beta2, sqgrad - v) * sqgrad;
                        param -= eta * (alpha_t * m / (sqrt(v) + eps) +
                                        weight_decay_rate * param);''',
                     'yogi')
