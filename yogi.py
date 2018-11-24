@@ -151,7 +151,7 @@ class YogiRule(optimizer.UpdateRule):
                        vhat = max(vhat, v);
                        param -= eta * (alpha_t * m / (sqrt(vhat) + eps) +
                                        weight_decay_rate * param);''',
-                    'adam')
+                    'yogi')
             YogiRule._amsgrad_kernel(
                 grad, self.alpha_t, 1 - hp.beta1,
                 1 - hp.beta2, hp.eps,
@@ -169,7 +169,7 @@ class YogiRule(optimizer.UpdateRule):
                        v += one_minus_beta2 * sign(sqgrad - v) * sqgrad;
                        param -= eta * (alpha_t * m / (sqrt(v) + eps) +
                                        weight_decay_rate * param);''',
-                    'adam')
+                    'yogi')
             YogiRule._kernel(grad, self.alpha_t, 1 - hp.beta1,
                              1 - hp.beta2, hp.eps,
                              hp.eta, hp.weight_decay_rate,
