@@ -1,6 +1,8 @@
 # chainer-yogi
 An unofficial implementation of Yogi optimizer in Chainer. See https://papers.nips.cc/paper/8186-adaptive-methods-for-nonconvex-optimization
 
+Tested with `chainer==5.0.0` and `cupy==5.0.0`.
+
 ## Results on MNIST
 ```
 GPU: -1
